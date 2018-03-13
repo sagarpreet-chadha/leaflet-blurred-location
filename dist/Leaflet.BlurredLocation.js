@@ -768,6 +768,7 @@ BlurredLocation = function BlurredLocation(options) {
     var precision = getPrecision();
     var interval = Math.pow(10,-precision);
     var bounds = [[getLat(), getLon()], [getLat() + (getLat()/Math.abs(getLat()))*interval, getLon() + (getLon()/Math.abs(getLon()))*interval]];
+   
     if(isBlurred()) {
         drawCenterRectangle(bounds);
         disableCenterMarker();
@@ -776,6 +777,8 @@ BlurredLocation = function BlurredLocation(options) {
        enableCenterMarker();
        disableCenterShade();
     }
+    document.getElementById('lat').value = getLat() ;
+    document.getElementById('lng').value = getLon() ; 
   }
 
 
