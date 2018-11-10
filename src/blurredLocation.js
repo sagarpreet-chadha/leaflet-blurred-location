@@ -186,8 +186,8 @@ BlurredLocation = function BlurredLocation(options) {
        enableCenterMarker();
        disableCenterShade();
     }
-    document.getElementById('lat').value = getLat() ;
-    document.getElementById('lng').value = getLon() ;
+    $("#"+InterfaceOptions.latId).val(getLat()) ;
+    $("#"+InterfaceOptions.lngId).val(getLon()) ; 
   }
 
 
@@ -223,14 +223,6 @@ BlurredLocation = function BlurredLocation(options) {
   }
 
     updateRectangleOnPan();
-
-  function geocodeWithBrowser(boolean) {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-      goTo(position.coords.latitude, position.coords.longitude,options.zoom);
-      });
-    }
-  }
 
   function displayLocation() {
     var lat = getLat();
