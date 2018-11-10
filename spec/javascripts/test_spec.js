@@ -12,14 +12,14 @@ describe("Basic testing", function() {
 
   it("Checks if getLon returns the correct longitude with correct precision", function () {
     blurredLocation.setZoom(13);
-    expect(blurredLocation.getLon()).toBe(1.0);
+    expect(blurredLocation.getLon()).toBe(10);
     blurredLocation.setZoom(10);
-    expect(blurredLocation.getLon()).toBe(1.0);
+    expect(blurredLocation.getLon()).toBe(10);
   });
 
   it("Checks if goTo changes the map location to given parameters", function() {
     expect(blurredLocation.getLat()).toBe(1.0);
-    expect(blurredLocation.getLon()).toBe(1.0);
+    expect(blurredLocation.getLon()).toBe(10);
     blurredLocation.goTo(51.50223, -0.09123213, 13);
     expect(blurredLocation.getLat()).toBe(51.50);
     expect(blurredLocation.getLon()).toBe(-0.09);
@@ -89,6 +89,11 @@ describe("Basic testing", function() {
     expect(blurredLocation.getPrecision()).toBe(2);
     blurredLocation.setZoomByPrecision(1);
     expect(blurredLocation.getPrecision()).toBe(1);
+  });
+
+  it("Checks if getDistanceMetrics returns correct scale", function() {
+    blurredLocation.setZoomByPrecision(2);
+    expect(blurredLocation.getDistanceMetrics()).toBe(1.41);
   });
 
   // it("geocode spec", function() {
